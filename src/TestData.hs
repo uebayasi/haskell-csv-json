@@ -18,10 +18,6 @@ import Tree
 
 
 
--- "group.0.name,野菜"
---   =>
-
-
 csv1 :: Json
 csv1 =
     Json $ Obj $ Map.fromList

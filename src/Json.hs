@@ -47,7 +47,7 @@ buildJson (Tree (Ary ary)) =
 buildJson (Tree (Val val)) =
     return $ Json $ Val val
 
-    
+
 
 --
 
@@ -72,10 +72,10 @@ parseJSONObj = withObject "Json" $ \obj -> do
         -- XXX Data.Foldable.toList doesn't work
         kvs :: [(Text, Value)]
         kvs = HM.toList obj
-    xs <- mapM (\(k, v) -> do
+    xs <- forM kvs $ \(k, v) -> do
             j <- parseJSON v
             return (k, j)
-        ) kvs
+
     return $ Json $ Obj $ Map.fromList xs
 
 
